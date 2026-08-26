@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dvoraksoft.exchangerates.R
-import com.dvoraksoft.exchangerates.ui.theme.Accent
-import com.dvoraksoft.exchangerates.ui.theme.ExchangeRatesTheme
+import com.dvoraksoft.exchangerates.presentation.ui.theme.Accent
+import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme
 
 @Preview(showBackground = true)
 @Composable

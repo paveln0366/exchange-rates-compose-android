@@ -1,11 +1,11 @@
-package com.dvoraksoft.exchangerates
+package com.dvoraksoft.exchangerates.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.dvoraksoft.exchangerates.presentation.screen.main.MainScreen
-import com.dvoraksoft.exchangerates.ui.theme.ExchangeRatesTheme
+import com.dvoraksoft.exchangerates.presentation.navigation.NavGraph
+import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ExchangeRatesTheme {
-                MainScreen()
+                NavGraph()
             }
         }
     }

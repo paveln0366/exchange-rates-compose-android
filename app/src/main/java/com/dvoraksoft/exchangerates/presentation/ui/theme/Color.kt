@@ -1,4 +1,4 @@
-package com.dvoraksoft.exchangerates.ui.theme
+package com.dvoraksoft.exchangerates.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
