@@ -35,7 +35,7 @@ import com.dvoraksoft.exchangerates.ui.theme.ExchangeRatesTheme
 
 @Preview(showBackground = true)
 @Composable
-fun MainScreenPreview() {
+fun BynScreenPreview() {
     ExchangeRatesTheme {
         BynScreen()
     }
