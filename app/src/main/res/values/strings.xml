@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Exchange Rates</string>
+
+    <string name="main_screen_title">Курсы валют</string>
+    <string name="byn_button_title">Курсы BYN</string>
+    <string name="basket_button_title">Корзина валют</string>
+    <string name="chart_button_title">График</string>
+
 </resources>
