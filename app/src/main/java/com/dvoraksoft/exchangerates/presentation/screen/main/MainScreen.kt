@@ -38,12 +38,13 @@ fun MainScreen(
     onNavigateToChartScreen: () -> Unit = {}
 ) {
     Scaffold(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        containerColor = Color.White
     ) { innerPadding ->
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
-                .padding(all = 16.dp),
+                .padding(16.dp),
             contentPadding = innerPadding,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -51,17 +52,16 @@ fun MainScreen(
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = stringResource(R.string.main_screen_title),
-                    fontSize = 24.sp,
+                    fontSize = 20.sp,
                     color = Color.DarkGray,
                     textAlign = TextAlign.Center
-
                 )
             }
             item {
                 Button(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-
+                        onNavigateToBynScreen()
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -71,7 +71,7 @@ fun MainScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.byn_button_title),
-                        fontSize = 28.sp
+                        fontSize = 20.sp
                     )
                 }
             }
@@ -79,7 +79,7 @@ fun MainScreen(
                 Button(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-
+                        onNavigateToBasketScreen()
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -89,7 +89,7 @@ fun MainScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.basket_button_title),
-                        fontSize = 28.sp
+                        fontSize = 20.sp
                     )
                 }
             }
@@ -97,7 +97,7 @@ fun MainScreen(
                 Button(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-
+                        onNavigateToChartScreen()
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -107,7 +107,7 @@ fun MainScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.chart_button_title),
-                        fontSize = 28.sp
+                        fontSize = 20.sp
                     )
                 }
             }

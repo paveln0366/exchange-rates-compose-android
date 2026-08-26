@@ -14,4 +14,12 @@
     <string name="display_button_title">Вывести</string>
     <string name="date_placeholder">На дату:</string>
 
+    <string name="chart_screen_app_bar_title">Курс USD НБ РБ</string>
+    <string name="chart_screen_text_usd">USD</string>
+    <string name="chart_screen_text_today">На сегодня</string>
+    <string name="chart_screen_text_trading">Торги БВФБ</string>
+    <string name="chart_screen_text_change">Изм.</string>
+    <string name="chart_screen_text_update">Обн.</string>
+    <string name="chart_screen_text_dynamics">Динамика курса USD НБ РБ</string>
+
 </resources>

@@ -1,7 +1,6 @@
 package com.dvoraksoft.exchangerates.presentation.screen.basket
 
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -26,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -62,21 +62,26 @@ fun BasketScreen(
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    Icon(
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                            .clickable { onBackClick() },
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = ""
-                    )
-                }
+                    IconButton(
+                        onClick = { onBackClick() }
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = null
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.White
+                )
             )
-        }
+        },
+        containerColor = Color.White
     ) { innerPadding ->
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
-                .padding(all = 16.dp),
+                .padding(16.dp),
             contentPadding = innerPadding,
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -95,8 +100,8 @@ fun BasketScreen(
                 Box(
                     modifier = modifier
                         .fillMaxWidth()
-                        .border(width = 1.dp, color = Color.LightGray)
-                        .padding(all = 12.dp)
+                        .border(width = 1.dp, color = Color.LightGray.copy(alpha = 0.5f))
+                        .padding(8.dp)
                 ) {
                     Row {
                         val state = rememberTextFieldState()
@@ -147,9 +152,9 @@ fun BasketScreen(
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = stringResource(R.string.basket_screen_description),
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                     color = Color.DarkGray,
-                    lineHeight = 14.sp
+                    lineHeight = 12.sp
 
                 )
             }
