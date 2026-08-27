@@ -33,7 +33,7 @@ fun MainScreenPreview() {
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    onNavigateToBynScreen: () -> Unit = {},
+    onNavigateToRateScreen: () -> Unit = {},
     onNavigateToBasketScreen: () -> Unit = {},
     onNavigateToChartScreen: () -> Unit = {}
 ) {
@@ -61,7 +61,7 @@ fun MainScreen(
                 Button(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-                        onNavigateToBynScreen()
+                        onNavigateToRateScreen()
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(

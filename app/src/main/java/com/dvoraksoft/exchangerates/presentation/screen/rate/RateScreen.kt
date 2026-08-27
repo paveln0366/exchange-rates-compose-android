@@ -1,4 +1,4 @@
-package com.dvoraksoft.exchangerates.presentation.screen.byn
+package com.dvoraksoft.exchangerates.presentation.screen.rate
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,15 +36,15 @@ import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme
 
 @Preview(showBackground = true)
 @Composable
-fun BynScreenPreview() {
+fun RateScreenPreview() {
     ExchangeRatesTheme {
-        BynScreen()
+        RateScreen()
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BynScreen(
+fun RateScreen(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit = {},
     onRefreshClick: () -> Unit = {}

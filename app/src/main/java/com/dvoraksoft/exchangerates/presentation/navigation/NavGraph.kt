@@ -5,9 +5,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dvoraksoft.exchangerates.presentation.screen.basket.BasketScreen
-import com.dvoraksoft.exchangerates.presentation.screen.byn.BynScreen
 import com.dvoraksoft.exchangerates.presentation.screen.chart.ChartScreen
 import com.dvoraksoft.exchangerates.presentation.screen.main.MainScreen
+import com.dvoraksoft.exchangerates.presentation.screen.rate.RateScreen
 
 @Composable
 fun NavGraph() {
@@ -19,8 +19,8 @@ fun NavGraph() {
     ) {
         composable(Screen.Main.route) {
             MainScreen(
-                onNavigateToBynScreen = {
-                    navController.navigate(Screen.Byn.route)
+                onNavigateToRateScreen = {
+                    navController.navigate(Screen.Rate.route)
                 },
                 onNavigateToBasketScreen = {
                     navController.navigate(Screen.Basket.route)
@@ -31,8 +31,8 @@ fun NavGraph() {
             )
         }
 
-        composable(Screen.Byn.route) {
-            BynScreen(
+        composable(Screen.Rate.route) {
+            RateScreen(
                 onBackClick = {
                     navController.popBackStack()
                 }
@@ -60,7 +60,7 @@ fun NavGraph() {
 sealed class Screen(val route: String) {
 
     data object Main : Screen("main")
-    data object Byn : Screen("byn")
+    data object Rate : Screen("rate")
     data object Basket : Screen("basket")
     data object Chart : Screen("chart")
 }
