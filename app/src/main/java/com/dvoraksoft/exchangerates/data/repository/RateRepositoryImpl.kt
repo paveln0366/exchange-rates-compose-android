@@ -1,5 +1,6 @@
 package com.dvoraksoft.exchangerates.data.repository
 
+import com.dvoraksoft.exchangerates.data.mapper.toDomain
 import com.dvoraksoft.exchangerates.data.remote.ApiService
 import com.dvoraksoft.exchangerates.domain.entity.Rate
 import com.dvoraksoft.exchangerates.domain.repository.RateRepository
@@ -10,6 +11,11 @@ class RateRepositoryImpl @Inject constructor(
 ) : RateRepository {
 
     override suspend fun getRates(): List<Rate> {
-        return emptyList()
+
+        val todayRates = apiService.getRates()
+
+        return todayRates.map { todayRate ->
+            todayRate.toDomain(yesterdayOfficialRate = todayRate.curOfficialRate)
+        }
     }
 }
