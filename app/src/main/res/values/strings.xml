@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exchange Rates</string>
+    <string name="app_name">Курсы валют</string>
 
     <string name="main_screen_title">Курсы валют</string>
     <string name="byn_button_title">Курсы BYN</string>
