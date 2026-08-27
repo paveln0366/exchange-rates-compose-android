@@ -62,8 +62,7 @@ fun RateScreenPreview() {
 fun RateScreen(
     modifier: Modifier = Modifier,
     viewModel: RateViewModel = hiltViewModel(),
-    onBackClick: () -> Unit = {},
-    onRefreshClick: () -> Unit = {}
+    onBackClick: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -99,9 +98,10 @@ fun RateScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
+                val date = (uiState as? RatesUiState.Success)?.date ?: ""
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = stringResource(R.string.byn_screen_title),
+                    text = stringResource(R.string.byn_screen_title, date),
                     fontSize = 16.sp,
                     color = Color.DarkGray,
                     textAlign = TextAlign.Center
@@ -109,10 +109,11 @@ fun RateScreen(
                 )
             }
             item {
+                Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     modifier = Modifier.wrapContentWidth(),
                     onClick = {
-                        onRefreshClick()
+                        viewModel.loadRates()
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -125,23 +126,26 @@ fun RateScreen(
                         fontSize = 20.sp,
                     )
                 }
-                Spacer(modifier = Modifier.height(16.dp))
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(2.dp)
-                        .background(Accent)
-                )
             }
 
             when (val state = uiState) {
                 RatesUiState.Loading -> {
                     item {
+                        Spacer(modifier = Modifier.height(16.dp))
                         CircularProgressIndicator(color = Accent)
                     }
                 }
 
                 is RatesUiState.Success -> {
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(2.dp)
+                                .background(Accent)
+                        )
+                    }
                     items(state.rates) { rate ->
                         RateRowItem(rate)
                     }
@@ -149,6 +153,7 @@ fun RateScreen(
 
                 is RatesUiState.Error -> {
                     item {
+                        Spacer(modifier = Modifier.height(16.dp))
                         Text(text = state.message, color = Color.Red)
                     }
                 }
@@ -228,11 +233,11 @@ fun RateRowItem(rate: Rate) {
         ) {
             val isPositive = rate.delta > 0
             val color = if (isPositive) Color.Green else Color.Red
-            val sign = if (isPositive) "+" else "-"
-            val deltaText = String.format(Locale.US, "%s%.4f", sign, rate.delta)
+            val sign = if (isPositive) "+" else ""
+            val delta = String.format(Locale.US, "%s%.4f", sign, rate.delta)
 
             Text(
-                text = deltaText,
+                text = delta,
                 fontSize = 12.sp,
                 color = color
             )

@@ -6,7 +6,7 @@
     <string name="basket_button_title">Корзина валют</string>
     <string name="chart_button_title">График</string>
 
-    <string name="byn_screen_title">Официальные курсы белорусского рубля по отношению к иностраынным валютам, устанавливаемые НБ РБ ежедневно, на %s</string>
+    <string name="byn_screen_title">Официальные курсы белорусского рубля по отношению к иностранным валютам, устанавливаемые НБ РБ ежедневно, на %s</string>
     <string name="update_button_title">Обновить</string>
 
     <string name="basket_screen_title">Официальные курсы белорусского рубля по отношению к иностраынным валютам и стоимость корзины иностранных валют, устанавливаемые НБ РБ ежедневно, на %s</string>

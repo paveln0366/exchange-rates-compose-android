@@ -9,7 +9,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.number
+import kotlinx.datetime.todayIn
 import javax.inject.Inject
+import kotlin.time.Clock
 
 @HiltViewModel
 class RateViewModel @Inject constructor(
@@ -27,10 +31,15 @@ class RateViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.value = RatesUiState.Loading
             try {
+                val today = Clock.System.todayIn(TimeZone.currentSystemDefault())
+                val day = today.day.toString().padStart(2, '0')
+                val month = today.month.number.toString().padStart(2, '0')
+                val year = today.year
+
                 val rates = getRatesUseCase()
 
                 _uiState.value = RatesUiState.Success(
-                    date = "dd.MM.yyyy",
+                    date = "$day.$month.$year",
                     rates = rates
                 )
             } catch (e: Exception) {
