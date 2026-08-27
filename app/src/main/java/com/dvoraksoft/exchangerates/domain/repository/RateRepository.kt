@@ -2,7 +2,7 @@ package com.dvoraksoft.exchangerates.domain.repository
 
 import com.dvoraksoft.exchangerates.domain.entity.Rate
 
-interface ReteRepository {
+interface RateRepository {
 
     suspend fun getRates(): List<Rate>
 }

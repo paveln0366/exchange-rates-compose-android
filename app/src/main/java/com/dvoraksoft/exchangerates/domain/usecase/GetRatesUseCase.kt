@@ -1,14 +1,14 @@
 package com.dvoraksoft.exchangerates.domain.usecase
 
 import com.dvoraksoft.exchangerates.domain.entity.Rate
-import com.dvoraksoft.exchangerates.domain.repository.ReteRepository
+import com.dvoraksoft.exchangerates.domain.repository.RateRepository
 import javax.inject.Inject
 
 class GetRatesUseCase @Inject constructor(
-    private val repository: ReteRepository
+    private val rateRepository: RateRepository
 ) {
 
     suspend operator fun invoke(): List<Rate> {
-        return repository.getRates()
+        return rateRepository.getRates()
     }
 }
