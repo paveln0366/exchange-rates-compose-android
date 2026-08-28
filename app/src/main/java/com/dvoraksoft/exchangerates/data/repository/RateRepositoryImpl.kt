@@ -43,21 +43,4 @@ class RateRepositoryImpl @Inject constructor(
 
         rateDao.insertRates(entities)
     }
-
-    // TODO: Not used
-    override suspend fun getRates(): List<Rate> {
-
-        val today = Clock.System.todayIn(TimeZone.currentSystemDefault())
-        val yesterday = today.minus(1, DateTimeUnit.DAY)
-
-        val todayRates = apiService.getRates()
-        val yesterdayRates = apiService.getRates(onDate = yesterday.toString())
-
-        return todayRates.map { todayRate ->
-            val yesterdayRate = yesterdayRates.find { yesterdayRate ->
-                yesterdayRate.curAbbreviation == todayRate.curAbbreviation
-            }
-            todayRate.toDomain(yesterdayOfficialRate = yesterdayRate?.curOfficialRate ?: 0.0)
-        }
-    }
 }

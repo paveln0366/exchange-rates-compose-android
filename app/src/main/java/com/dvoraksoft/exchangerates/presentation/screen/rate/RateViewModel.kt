@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dvoraksoft.exchangerates.domain.entity.Rate
 import com.dvoraksoft.exchangerates.domain.usecase.GetRatesFlowUseCase
-import com.dvoraksoft.exchangerates.domain.usecase.GetRatesUseCase
 import com.dvoraksoft.exchangerates.domain.usecase.RefreshRatesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +19,6 @@ import kotlin.time.Clock
 
 @HiltViewModel
 class RateViewModel @Inject constructor(
-    private val getRatesUseCase: GetRatesUseCase,
     private val getRatesFlowUseCase: GetRatesFlowUseCase,
     private val refreshRatesUseCase: RefreshRatesUseCase
 ) : ViewModel() {
@@ -31,7 +29,6 @@ class RateViewModel @Inject constructor(
     init {
         observeRates()
         refreshRates()
-//        loadRates()
     }
 
     private fun observeRates() {
@@ -62,24 +59,6 @@ class RateViewModel @Inject constructor(
                 if (_uiState.value !is RatesUiState.Success) {
                     _uiState.value = RatesUiState.Error(e.localizedMessage ?: "Loading error")
                 }
-            }
-        }
-    }
-
-    // TODO: Not used
-    fun loadRates() {
-        viewModelScope.launch {
-            _uiState.value = RatesUiState.Loading
-            try {
-                val todayDate = getTodayDate()
-                val rates = getRatesUseCase()
-
-                _uiState.value = RatesUiState.Success(
-                    date = todayDate,
-                    rates = rates
-                )
-            } catch (e: Exception) {
-                _uiState.value = RatesUiState.Error(e.localizedMessage ?: "Loading error")
             }
         }
     }
