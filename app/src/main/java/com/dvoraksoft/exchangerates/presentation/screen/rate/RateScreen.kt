@@ -113,7 +113,7 @@ fun RateScreen(
                 Button(
                     modifier = Modifier.wrapContentWidth(),
                     onClick = {
-                        viewModel.loadRates()
+                        viewModel.refreshRates()
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(

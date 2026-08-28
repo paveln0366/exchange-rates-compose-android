@@ -11,7 +11,7 @@ data class RateEntity(
     val name: String,
     val scale: Int,
     val rate: Double,
-    val delta: Double?,
+    val delta: Double,
     val flagUrl: String,
     val lastUpdated: Long = System.currentTimeMillis()
 )

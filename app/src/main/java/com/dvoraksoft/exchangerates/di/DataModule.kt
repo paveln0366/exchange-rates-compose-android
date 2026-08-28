@@ -1,5 +1,9 @@
 package com.dvoraksoft.exchangerates.di
 
+import android.content.Context
+import androidx.room.Room
+import com.dvoraksoft.exchangerates.data.local.AppDatabase
+import com.dvoraksoft.exchangerates.data.local.RateDao
 import com.dvoraksoft.exchangerates.data.remote.ApiService
 import com.dvoraksoft.exchangerates.data.repository.RateRepositoryImpl
 import com.dvoraksoft.exchangerates.domain.repository.RateRepository
@@ -7,6 +11,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -64,6 +69,26 @@ interface DataModule {
             retrofit: Retrofit
         ): ApiService {
             return retrofit.create()
+        }
+
+        @Provides
+        @Singleton
+        fun provideDatabase(
+            @ApplicationContext context: Context
+        ): AppDatabase {
+            return Room.databaseBuilder(
+                context = context,
+                klass = AppDatabase::class.java,
+                name = "database.db"
+            ).fallbackToDestructiveMigration(true).build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideRateDao(
+            database: AppDatabase
+        ): RateDao {
+            return database.rateDao()
         }
     }
 }

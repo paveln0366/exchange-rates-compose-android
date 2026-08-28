@@ -21,6 +21,18 @@ fun RateDto.toEntity(yesterdayOfficialRate: Double): RateEntity {
     )
 }
 
+fun RateEntity.toDomain(): Rate {
+    return Rate(
+        id = this.curId,
+        abbreviation = this.abbreviation,
+        name = this.name,
+        scale = this.scale,
+        rate = this.rate,
+        delta = this.delta,
+        flagUrl = this.flagUrl
+    )
+}
+
 fun RateDto.toDomain(yesterdayOfficialRate: Double): Rate {
 
     val delta = this.curOfficialRate - yesterdayOfficialRate

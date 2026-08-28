@@ -25,6 +25,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("debug") // Temp for release build
             optimization {
                 enable = false
             }

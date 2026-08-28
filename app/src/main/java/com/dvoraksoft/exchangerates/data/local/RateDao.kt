@@ -15,6 +15,7 @@ interface RateDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRates(rates: List<RateEntity>)
 
+    // TODO: Not used
     @Query("DELETE FROM rates")
     suspend fun clearRates()
 }
