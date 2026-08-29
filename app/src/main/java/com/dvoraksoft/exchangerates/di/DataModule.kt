@@ -3,9 +3,12 @@ package com.dvoraksoft.exchangerates.di
 import android.content.Context
 import androidx.room.Room
 import com.dvoraksoft.exchangerates.data.local.AppDatabase
+import com.dvoraksoft.exchangerates.data.local.BasketDao
 import com.dvoraksoft.exchangerates.data.local.RateDao
 import com.dvoraksoft.exchangerates.data.remote.ApiService
+import com.dvoraksoft.exchangerates.data.repository.BasketRepositoryImpl
 import com.dvoraksoft.exchangerates.data.repository.RateRepositoryImpl
+import com.dvoraksoft.exchangerates.domain.repository.BasketRepository
 import com.dvoraksoft.exchangerates.domain.repository.RateRepository
 import dagger.Binds
 import dagger.Module
@@ -30,6 +33,12 @@ interface DataModule {
     fun bindRateRepository(
         rateRepositoryImpl: RateRepositoryImpl
     ): RateRepository
+
+    @Binds
+    @Singleton
+    fun bindBasketRepository(
+        basketRepositoryImpl: BasketRepositoryImpl
+    ): BasketRepository
 
     companion object {
 
@@ -89,6 +98,14 @@ interface DataModule {
             database: AppDatabase
         ): RateDao {
             return database.rateDao()
+        }
+
+        @Provides
+        @Singleton
+        fun provideBasketDao(
+            database: AppDatabase
+        ): BasketDao {
+            return database.basketDao()
         }
     }
 }

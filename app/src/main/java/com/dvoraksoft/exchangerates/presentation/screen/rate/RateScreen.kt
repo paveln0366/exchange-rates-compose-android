@@ -47,6 +47,8 @@ import com.dvoraksoft.exchangerates.R
 import com.dvoraksoft.exchangerates.domain.entity.Rate
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Accent
 import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme
+import com.dvoraksoft.exchangerates.presentation.ui.theme.Green
+import com.dvoraksoft.exchangerates.presentation.ui.theme.Red
 import java.util.Locale
 
 @Preview(showBackground = true)
@@ -232,7 +234,7 @@ fun RateRowItem(rate: Rate) {
             contentAlignment = Alignment.CenterEnd
         ) {
             val isPositive = rate.delta > 0
-            val color = if (isPositive) Color.Green else Color.Red
+            val color = if (isPositive) Green else Red
             val sign = if (isPositive) "+" else ""
             val delta = String.format(Locale.US, "%s%.4f", sign, rate.delta)
 

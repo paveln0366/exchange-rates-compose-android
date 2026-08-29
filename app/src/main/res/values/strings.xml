@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Курсы валют</string>
 
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="positive">▲</string>
+    <string name="negative">▼</string>
+
     <string name="main_screen_title">Курсы валют</string>
     <string name="byn_button_title">Курсы BYN</string>
     <string name="basket_button_title">Корзина валют</string>
@@ -9,10 +14,14 @@
     <string name="byn_screen_title">Официальные курсы белорусского рубля по отношению к иностранным валютам, устанавливаемые НБ РБ ежедневно, на %s</string>
     <string name="update_button_title">Обновить</string>
 
-    <string name="basket_screen_title">Официальные курсы белорусского рубля по отношению к иностраынным валютам и стоимость корзины иностранных валют, устанавливаемые НБ РБ ежедневно, на %s</string>
+    <string name="basket_screen_title">Официальные курсы белорусского рубля по отношению к иностранным валютам и стоимость корзины иностранных валют, устанавливаемые НБ РБ ежедневно, на %s</string>
     <string name="basket_screen_description">Стоимость корзины валют рассчитывается как среднее геометрическое взвешенное двусторонних курсов белорусского рубля к российскому рублю (RUB), доллару США (USD), китайскому юаню (CNY) за 1 единицу иностранной валюты с весами 0.6, 0.3 и 0.1 соответственно, т.е. стоимость корзины валют рассчитывается как произведение значений курсов белорусского рубля в степени 0.6, к доллару США в степени 0.3 и к китайскому юаню в степени 0.1.</string>
     <string name="display_button_title">Вывести</string>
     <string name="date_placeholder">На дату:</string>
+    <string name="tab_1">Курс белорусского рубля</string>
+    <string name="tab_2">Официальный курс</string>
+    <string name="tab_3">Изменения к 31 декабря %d, процентов</string>
+    <string name="tab_4">Изменения к предыдущему дню, процентов</string>
 
     <string name="chart_screen_app_bar_title">Курс USD НБ РБ</string>
     <string name="chart_screen_text_usd">USD</string>
