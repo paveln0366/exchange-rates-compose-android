@@ -74,20 +74,14 @@ fun RateScreen(
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    IconButton(
-                        onClick = {
-                            onBackClick()
-                        }
-                    ) {
+                    IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White
-                )
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
             )
         },
         containerColor = Color.White
@@ -114,9 +108,7 @@ fun RateScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     modifier = Modifier.wrapContentWidth(),
-                    onClick = {
-                        viewModel.refreshRates()
-                    },
+                    onClick = { viewModel.refreshRates() },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Accent,
@@ -125,7 +117,7 @@ fun RateScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.update_button_title).uppercase(),
-                        fontSize = 20.sp,
+                        fontSize = 20.sp
                     )
                 }
             }
@@ -238,11 +230,7 @@ fun RateRowItem(rate: Rate) {
             val sign = if (isPositive) "+" else ""
             val delta = String.format(Locale.US, "%s%.4f", sign, rate.delta)
 
-            Text(
-                text = delta,
-                fontSize = 12.sp,
-                color = color
-            )
+            Text(text = delta, fontSize = 12.sp, color = color)
         }
     }
 }

@@ -7,8 +7,10 @@ import com.dvoraksoft.exchangerates.data.local.BasketDao
 import com.dvoraksoft.exchangerates.data.local.RateDao
 import com.dvoraksoft.exchangerates.data.remote.ApiService
 import com.dvoraksoft.exchangerates.data.repository.BasketRepositoryImpl
+import com.dvoraksoft.exchangerates.data.repository.ChartRepositoryImpl
 import com.dvoraksoft.exchangerates.data.repository.RateRepositoryImpl
 import com.dvoraksoft.exchangerates.domain.repository.BasketRepository
+import com.dvoraksoft.exchangerates.domain.repository.ChartRepository
 import com.dvoraksoft.exchangerates.domain.repository.RateRepository
 import dagger.Binds
 import dagger.Module
@@ -39,6 +41,12 @@ interface DataModule {
     fun bindBasketRepository(
         basketRepositoryImpl: BasketRepositoryImpl
     ): BasketRepository
+
+    @Binds
+    @Singleton
+    fun bindChartRepository(
+        chartRepositoryImpl: ChartRepositoryImpl
+    ): ChartRepository
 
     companion object {
 

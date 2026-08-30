@@ -1,0 +1,26 @@
+package com.dvoraksoft.exchangerates.domain.usecase
+
+import com.dvoraksoft.exchangerates.domain.entity.Dynamic
+import com.dvoraksoft.exchangerates.domain.entity.PeriodType
+import com.dvoraksoft.exchangerates.domain.repository.ChartRepository
+import kotlinx.datetime.DatePeriod
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.minus
+import kotlinx.datetime.toLocalDateTime
+import javax.inject.Inject
+import kotlin.time.Clock
+
+class GetDynamicsUseCase @Inject constructor(
+    private val repository: ChartRepository
+) {
+
+    suspend operator fun invoke(period: PeriodType): List<Dynamic> {
+        val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+        val startDate = when (period) {
+            PeriodType.WEEK -> today.minus(DatePeriod(days = 7))
+            PeriodType.MONTH -> today.minus(DatePeriod(months = 1))
+            PeriodType.QUARTER -> today.minus(DatePeriod(months = 3))
+        }
+        return repository.getDynamics(startDate, today)
+    }
+}

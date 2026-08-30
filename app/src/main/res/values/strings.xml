@@ -3,6 +3,7 @@
 
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
     <string name="positive">▲</string>
     <string name="negative">▼</string>
 
@@ -30,5 +31,8 @@
     <string name="chart_screen_text_change">Изм.</string>
     <string name="chart_screen_text_update">Обн.</string>
     <string name="chart_screen_text_dynamics">Динамика курса USD НБ РБ</string>
+    <string name="chart_screen_week">Неделя</string>
+    <string name="chart_screen_month">Месяц</string>
+    <string name="chart_screen_quarter">Квартал</string>
 
 </resources>

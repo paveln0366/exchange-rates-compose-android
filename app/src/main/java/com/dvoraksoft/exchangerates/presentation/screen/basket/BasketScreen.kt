@@ -91,24 +91,19 @@ fun BasketScreen(
     var showDatePicker by remember { mutableStateOf(false) }
 
     Scaffold(
+        modifier = modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    IconButton(
-                        onClick = {
-                            onBackClick()
-                        }
-                    ) {
+                    IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White
-                )
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
             )
         },
         containerColor = Color.White
@@ -166,9 +161,7 @@ fun BasketScreen(
                                 },
                                 trailingIcon = {
                                     Icon(
-                                        modifier = Modifier.clickable {
-                                            showDatePicker = true
-                                        },
+                                        modifier = Modifier.clickable { showDatePicker = true },
                                         imageVector = Icons.Outlined.DateRange,
                                         tint = Color.Gray,
                                         contentDescription = null,
@@ -246,19 +239,18 @@ fun BasketScreen(
                 }
 
                 is BasketUiState.Error -> {
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(text = state.message, color = Color.Red)
+                            Text(text = state.message, color = Red)
                             Spacer(modifier = Modifier.height(8.dp))
-                            Button(onClick = {
-                                val today = Clock.System.now()
-                                    .toLocalDateTime(TimeZone.currentSystemDefault()).date
-                                viewModel.onDateSelected(today)
-                            }) {
-                                Text("Повторить")
+                            Button(
+                                onClick = {
+                                    val today = Clock.System.now()
+                                        .toLocalDateTime(TimeZone.currentSystemDefault()).date
+                                    viewModel.onDateSelected(today)
+                                }
+                            ) {
+                                Text(stringResource(R.string.update))
                             }
                         }
                     }
@@ -271,9 +263,7 @@ fun BasketScreen(
         val datePickerState = rememberDatePickerState()
 
         DatePickerDialog(
-            onDismissRequest = {
-                showDatePicker = false
-            },
+            onDismissRequest = { showDatePicker = false },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -291,11 +281,7 @@ fun BasketScreen(
                 }
             },
             dismissButton = {
-                TextButton(
-                    onClick = {
-                        showDatePicker = false
-                    }
-                ) {
+                TextButton(onClick = { showDatePicker = false }) {
                     Text(stringResource(R.string.cancel))
                 }
             }
