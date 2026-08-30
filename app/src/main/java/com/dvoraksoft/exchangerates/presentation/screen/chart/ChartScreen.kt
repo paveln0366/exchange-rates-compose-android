@@ -278,10 +278,14 @@ fun Label(
                 color = Color.Gray,
                 fontSize = 12.sp
             )
-            val isPositive = change >= 0
-            val prefix = if (isPositive) "+" else ""
+
+            val prefix = if (change > 0) "+" else ""
+            val changeColor = when {
+                change > 0 -> Green
+                change < 0 -> Red
+                else -> Color.Black
+            }
             val change = "$prefix${String.format(Locale.ROOT, "%.4f", change)}"
-            val changeColor = if (isPositive) Green else Red
             Text(
                 text = change,
                 color = changeColor,
