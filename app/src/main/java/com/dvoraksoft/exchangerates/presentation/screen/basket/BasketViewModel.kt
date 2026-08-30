@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dvoraksoft.exchangerates.domain.model.Basket
 import com.dvoraksoft.exchangerates.domain.usecase.GetBasketFlowUseCase
-import com.dvoraksoft.exchangerates.domain.usecase.RefreshBasketUseCase
+import com.dvoraksoft.exchangerates.domain.usecase.UpdateBasketUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,14 +14,14 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.todayIn
 import javax.inject.Inject
 import kotlin.time.Clock
 
 @HiltViewModel
 class BasketViewModel @Inject constructor(
     private val getBasketFlowUseCase: GetBasketFlowUseCase,
-    private val refreshBasketUseCase: RefreshBasketUseCase
+    private val updateBasketUseCase: UpdateBasketUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<BasketUiState>(BasketUiState.Loading)
@@ -30,7 +30,7 @@ class BasketViewModel @Inject constructor(
     private var observeJob: Job? = null
 
     init {
-        val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+        val today = Clock.System.todayIn(TimeZone.currentSystemDefault())
         onDateSelected(today)
     }
 
@@ -51,14 +51,14 @@ class BasketViewModel @Inject constructor(
                 }
         }
 
-        refreshBasket(date)
+        updateBasket(date)
     }
 
-    fun refreshBasket(date: LocalDate) {
+    fun updateBasket(date: LocalDate) {
         viewModelScope.launch {
             _uiState.value = BasketUiState.Loading
             try {
-                refreshBasketUseCase(date)
+                updateBasketUseCase(date)
             } catch (e: Exception) {
                 if (_uiState.value !is BasketUiState.Success) {
                     _uiState.value = BasketUiState.Error(e.localizedMessage ?: "Loading error")

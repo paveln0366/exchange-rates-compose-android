@@ -25,7 +25,7 @@ class BasketRepositoryImpl @Inject constructor(
         return basketDao.getBasketByDateFlow(date.toString()).filterNotNull().map { it.toDomain() }
     }
 
-    override suspend fun refreshBasket(date: LocalDate) {
+    override suspend fun updateBasket(date: LocalDate) {
         val dateString = date.toString()
         val prevYearString = LocalDate(date.year - 1, 12, 31).toString()
         val prevDayString = date.minus(DatePeriod(days = 1)).toString()

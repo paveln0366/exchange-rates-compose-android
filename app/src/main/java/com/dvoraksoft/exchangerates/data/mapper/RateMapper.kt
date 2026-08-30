@@ -5,11 +5,9 @@ import com.dvoraksoft.exchangerates.data.remote.dto.RateDto
 import com.dvoraksoft.exchangerates.domain.model.Rate
 import java.util.Locale
 
-fun RateDto.toEntity(yesterdayOfficialRate: Double): RateDbModel {
-
+fun RateDto.toDbModel(yesterdayOfficialRate: Double): RateDbModel {
     val currentRate = this.curOfficialRate
     val delta = currentRate - yesterdayOfficialRate
-
     return RateDbModel(
         abbreviation = this.curAbbreviation,
         curId = this.curId,
@@ -30,21 +28,6 @@ fun RateDbModel.toDomain(): Rate {
         rate = this.rate,
         delta = this.delta,
         flagUrl = this.flagUrl
-    )
-}
-
-fun RateDto.toDomain(yesterdayOfficialRate: Double): Rate {
-
-    val delta = this.curOfficialRate - yesterdayOfficialRate
-
-    return Rate(
-        id = this.curId,
-        abbreviation = this.curAbbreviation,
-        name = this.curName,
-        scale = this.curScale,
-        rate = this.curOfficialRate,
-        delta = delta,
-        flagUrl = getFlagUrl(this.curAbbreviation)
     )
 }
 

@@ -6,7 +6,7 @@ import com.dvoraksoft.exchangerates.domain.repository.ChartRepository
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.todayIn
 import javax.inject.Inject
 import kotlin.time.Clock
 
@@ -15,7 +15,7 @@ class GetDynamicsUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(period: PeriodType): List<Dynamic> {
-        val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+        val today = Clock.System.todayIn(TimeZone.currentSystemDefault())
         val startDate = when (period) {
             PeriodType.WEEK -> today.minus(DatePeriod(days = 7))
             PeriodType.MONTH -> today.minus(DatePeriod(months = 1))

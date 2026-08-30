@@ -23,6 +23,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -194,7 +195,7 @@ fun ChartScreen(
                             .fillMaxWidth()
                             .weight(1f)
                     ) {
-                        LineChart(dynamics = state.dynamics)
+                        Chart(dynamics = state.dynamics)
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -223,9 +224,18 @@ fun ChartScreen(
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(text = state.message, color = Red)
                             Spacer(modifier = Modifier.height(8.dp))
-                            Button(onClick = { viewModel.onPeriodSelected(PeriodType.WEEK) }
+                            Button(
+                                onClick = { viewModel.onPeriodSelected(PeriodType.WEEK) },
+                                shape = RoundedCornerShape(8.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Accent,
+                                    contentColor = Color.White
+                                ),
                             ) {
-                                Text(stringResource(R.string.update))
+                                Text(
+                                    text = stringResource(R.string.update).uppercase(),
+                                    fontSize = 20.sp
+                                )
                             }
                         }
                     }
@@ -320,7 +330,7 @@ fun PeriodChip(
 }
 
 @Composable
-fun LineChart(
+fun Chart(
     dynamics: List<Dynamic>,
     modifier: Modifier = Modifier
 ) {
@@ -352,7 +362,7 @@ fun LineChart(
 
             val rateVal = minRate + (rateRange * (i.toFloat() / steps))
             drawContext.canvas.nativeCanvas.drawText(
-                String.format(Locale.US, "%.3f", rateVal),
+                String.format(Locale.ROOT, "%.3f", rateVal),
                 10f,
                 y - 8f,
                 Paint().apply {

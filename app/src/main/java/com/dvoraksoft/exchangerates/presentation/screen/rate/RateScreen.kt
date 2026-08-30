@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -94,7 +93,7 @@ fun RateScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-                val date = (uiState as? RatesUiState.Success)?.date ?: ""
+                val date = (uiState as? RatesUiState.Success)?.date ?: "..."
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = stringResource(R.string.byn_screen_title, date),
@@ -107,8 +106,7 @@ fun RateScreen(
             item {
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    modifier = Modifier.wrapContentWidth(),
-                    onClick = { viewModel.refreshRates() },
+                    onClick = { viewModel.updateRates() },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Accent,
@@ -205,7 +203,7 @@ fun RateRowItem(rate: Rate) {
             contentAlignment = Alignment.CenterEnd
         ) {
             Text(
-                text = String.format(Locale.US, "%.4f", rate.rate),
+                text = String.format(Locale.ROOT, "%.4f", rate.rate),
                 fontSize = 12.sp,
                 color = Color.DarkGray
             )
@@ -225,10 +223,13 @@ fun RateRowItem(rate: Rate) {
                 .padding(end = 8.dp),
             contentAlignment = Alignment.CenterEnd
         ) {
-            val isPositive = rate.delta > 0
-            val color = if (isPositive) Green else Red
-            val sign = if (isPositive) "+" else ""
-            val delta = String.format(Locale.US, "%s%.4f", sign, rate.delta)
+            val color = when {
+                rate.delta > 0 -> Green
+                rate.delta < 0 -> Red
+                else -> Color.DarkGray
+            }
+            val sign = if (rate.delta > 0) "+" else ""
+            val delta = String.format(Locale.ROOT, "%s%.4f", sign, rate.delta)
 
             Text(text = delta, fontSize = 12.sp, color = color)
         }

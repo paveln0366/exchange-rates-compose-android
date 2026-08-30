@@ -7,5 +7,5 @@ interface RateRepository {
 
     fun getRatesFlow(): Flow<List<Rate>>
 
-    suspend fun refreshRates()
+    suspend fun updateRates()
 }

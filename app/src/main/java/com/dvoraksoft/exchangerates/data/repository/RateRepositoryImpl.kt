@@ -1,8 +1,8 @@
 package com.dvoraksoft.exchangerates.data.repository
 
 import com.dvoraksoft.exchangerates.data.local.dao.RateDao
+import com.dvoraksoft.exchangerates.data.mapper.toDbModel
 import com.dvoraksoft.exchangerates.data.mapper.toDomain
-import com.dvoraksoft.exchangerates.data.mapper.toEntity
 import com.dvoraksoft.exchangerates.data.remote.ApiService
 import com.dvoraksoft.exchangerates.domain.model.Rate
 import com.dvoraksoft.exchangerates.domain.repository.RateRepository
@@ -21,26 +21,23 @@ class RateRepositoryImpl @Inject constructor(
 ) : RateRepository {
 
     override fun getRatesFlow(): Flow<List<Rate>> {
-        return rateDao.getRatesFlow().map { entities ->
-            entities.map { it.toDomain() }
-        }
+        return rateDao.getRatesFlow().map { rateDbModels -> rateDbModels.map { it.toDomain() } }
     }
 
-    override suspend fun refreshRates() {
-
+    override suspend fun updateRates() {
         val today = Clock.System.todayIn(TimeZone.currentSystemDefault())
         val yesterday = today.minus(1, DateTimeUnit.DAY)
 
         val todayRates = apiService.getRates()
         val yesterdayRates = apiService.getRates(onDate = yesterday.toString())
 
-        val entities = todayRates.map { todayRate ->
+        val rateDbModels = todayRates.map { todayRate ->
             val yesterdayRate = yesterdayRates.find { yesterdayRate ->
                 yesterdayRate.curAbbreviation == todayRate.curAbbreviation
             }
-            todayRate.toEntity(yesterdayOfficialRate = yesterdayRate?.curOfficialRate ?: 0.0)
+            todayRate.toDbModel(yesterdayRate?.curOfficialRate ?: 0.0)
         }
 
-        rateDao.insertRates(entities)
+        rateDao.insertRates(rateDbModels)
     }
 }

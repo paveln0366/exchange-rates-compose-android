@@ -8,5 +8,5 @@ interface BasketRepository {
 
     fun getBasketFlow(date: LocalDate): Flow<Basket>
 
-    suspend fun refreshBasket(date: LocalDate)
+    suspend fun updateBasket(date: LocalDate)
 }

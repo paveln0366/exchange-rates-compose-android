@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dvoraksoft.exchangerates.domain.model.Rate
 import com.dvoraksoft.exchangerates.domain.usecase.GetRatesFlowUseCase
-import com.dvoraksoft.exchangerates.domain.usecase.RefreshRatesUseCase
+import com.dvoraksoft.exchangerates.domain.usecase.UpdateRatesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +20,7 @@ import kotlin.time.Clock
 @HiltViewModel
 class RateViewModel @Inject constructor(
     private val getRatesFlowUseCase: GetRatesFlowUseCase,
-    private val refreshRatesUseCase: RefreshRatesUseCase
+    private val updateRatesUseCase: UpdateRatesUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<RatesUiState>(RatesUiState.Loading)
@@ -28,7 +28,7 @@ class RateViewModel @Inject constructor(
 
     init {
         observeRates()
-        refreshRates()
+        updateRates()
     }
 
     private fun observeRates() {
@@ -50,11 +50,11 @@ class RateViewModel @Inject constructor(
         }
     }
 
-    fun refreshRates() {
+    fun updateRates() {
         viewModelScope.launch {
             _uiState.value = RatesUiState.Loading
             try {
-                refreshRatesUseCase()
+                updateRatesUseCase()
             } catch (e: Exception) {
                 if (_uiState.value !is RatesUiState.Success) {
                     _uiState.value = RatesUiState.Error(e.localizedMessage ?: "Loading error")
