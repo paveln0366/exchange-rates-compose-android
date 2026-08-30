@@ -1,10 +1,10 @@
 package com.dvoraksoft.exchangerates.data.mapper
 
-import com.dvoraksoft.exchangerates.data.local.BasketEntity
-import com.dvoraksoft.exchangerates.domain.entity.Basket
-import com.dvoraksoft.exchangerates.domain.entity.BasketItem
+import com.dvoraksoft.exchangerates.data.local.dbModel.BasketDbModel
+import com.dvoraksoft.exchangerates.domain.model.Basket
+import com.dvoraksoft.exchangerates.domain.model.BasketItem
 
-fun BasketEntity.toDomain(): Basket {
+fun BasketDbModel.toDomain(): Basket {
     return Basket(
         date = this.date,
         basket = BasketItem(

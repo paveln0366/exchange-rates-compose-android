@@ -1,10 +1,10 @@
-package com.dvoraksoft.exchangerates.data.local
+package com.dvoraksoft.exchangerates.data.local.dbModel
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "rates")
-data class RateEntity(
+data class RateDbModel(
     @PrimaryKey
     val abbreviation: String,
     val curId: Int,

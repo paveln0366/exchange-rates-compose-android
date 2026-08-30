@@ -2,7 +2,7 @@ package com.dvoraksoft.exchangerates.presentation.screen.rate
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dvoraksoft.exchangerates.domain.entity.Rate
+import com.dvoraksoft.exchangerates.domain.model.Rate
 import com.dvoraksoft.exchangerates.domain.usecase.GetRatesFlowUseCase
 import com.dvoraksoft.exchangerates.domain.usecase.RefreshRatesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

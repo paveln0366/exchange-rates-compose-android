@@ -1,16 +1,16 @@
 package com.dvoraksoft.exchangerates.data.mapper
 
-import com.dvoraksoft.exchangerates.data.local.RateEntity
-import com.dvoraksoft.exchangerates.data.remote.RateDto
-import com.dvoraksoft.exchangerates.domain.entity.Rate
+import com.dvoraksoft.exchangerates.data.local.dbModel.RateDbModel
+import com.dvoraksoft.exchangerates.data.remote.dto.RateDto
+import com.dvoraksoft.exchangerates.domain.model.Rate
 import java.util.Locale
 
-fun RateDto.toEntity(yesterdayOfficialRate: Double): RateEntity {
+fun RateDto.toEntity(yesterdayOfficialRate: Double): RateDbModel {
 
     val currentRate = this.curOfficialRate
     val delta = currentRate - yesterdayOfficialRate
 
-    return RateEntity(
+    return RateDbModel(
         abbreviation = this.curAbbreviation,
         curId = this.curId,
         name = this.curName,
@@ -21,7 +21,7 @@ fun RateDto.toEntity(yesterdayOfficialRate: Double): RateEntity {
     )
 }
 
-fun RateEntity.toDomain(): Rate {
+fun RateDbModel.toDomain(): Rate {
     return Rate(
         id = this.curId,
         abbreviation = this.abbreviation,

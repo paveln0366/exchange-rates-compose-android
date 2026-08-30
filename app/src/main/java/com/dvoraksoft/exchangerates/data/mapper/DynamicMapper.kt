@@ -1,7 +1,7 @@
 package com.dvoraksoft.exchangerates.data.mapper
 
-import com.dvoraksoft.exchangerates.data.remote.DynamicDto
-import com.dvoraksoft.exchangerates.domain.entity.Dynamic
+import com.dvoraksoft.exchangerates.data.remote.dto.DynamicDto
+import com.dvoraksoft.exchangerates.domain.model.Dynamic
 import kotlinx.datetime.LocalDate
 
 fun DynamicDto.toDomain(): Dynamic {

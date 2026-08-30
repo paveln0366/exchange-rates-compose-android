@@ -1,4 +1,4 @@
-package com.dvoraksoft.exchangerates.domain.entity
+package com.dvoraksoft.exchangerates.domain.model
 
 data class Rate(
     val id: Int,

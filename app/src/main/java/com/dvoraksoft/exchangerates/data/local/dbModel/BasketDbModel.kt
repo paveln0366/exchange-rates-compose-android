@@ -1,10 +1,10 @@
-package com.dvoraksoft.exchangerates.data.local
+package com.dvoraksoft.exchangerates.data.local.dbModel
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "basket")
-data class BasketEntity(
+data class BasketDbModel(
     @PrimaryKey
     val date: String,
 

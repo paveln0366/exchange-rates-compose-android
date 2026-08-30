@@ -1,5 +1,7 @@
 package com.dvoraksoft.exchangerates.data.remote
 
+import com.dvoraksoft.exchangerates.data.remote.dto.DynamicDto
+import com.dvoraksoft.exchangerates.data.remote.dto.RateDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

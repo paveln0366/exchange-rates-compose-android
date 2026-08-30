@@ -1,6 +1,6 @@
 package com.dvoraksoft.exchangerates.domain.repository
 
-import com.dvoraksoft.exchangerates.domain.entity.Basket
+import com.dvoraksoft.exchangerates.domain.model.Basket
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.LocalDate
 

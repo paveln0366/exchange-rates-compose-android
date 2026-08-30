@@ -1,10 +1,10 @@
 package com.dvoraksoft.exchangerates.data.repository
 
-import com.dvoraksoft.exchangerates.data.local.BasketDao
-import com.dvoraksoft.exchangerates.data.local.BasketEntity
+import com.dvoraksoft.exchangerates.data.local.dao.BasketDao
+import com.dvoraksoft.exchangerates.data.local.dbModel.BasketDbModel
 import com.dvoraksoft.exchangerates.data.mapper.toDomain
 import com.dvoraksoft.exchangerates.data.remote.ApiService
-import com.dvoraksoft.exchangerates.domain.entity.Basket
+import com.dvoraksoft.exchangerates.domain.model.Basket
 import com.dvoraksoft.exchangerates.domain.repository.BasketRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
@@ -61,7 +61,7 @@ class BasketRepositoryImpl @Inject constructor(
         val basketChangePrevYear = calculatePercent(basketValue, basketPrevYear)
         val basketChangePrevDay = calculatePercent(basketValue, basketPrevDay)
 
-        val basket = BasketEntity(
+        val basket = BasketDbModel(
             date = dateString,
             basketValue = basketValue,
             basketChangePrevYear = basketChangePrevYear,

@@ -3,8 +3,8 @@ package com.dvoraksoft.exchangerates.di
 import android.content.Context
 import androidx.room.Room
 import com.dvoraksoft.exchangerates.data.local.AppDatabase
-import com.dvoraksoft.exchangerates.data.local.BasketDao
-import com.dvoraksoft.exchangerates.data.local.RateDao
+import com.dvoraksoft.exchangerates.data.local.dao.BasketDao
+import com.dvoraksoft.exchangerates.data.local.dao.RateDao
 import com.dvoraksoft.exchangerates.data.remote.ApiService
 import com.dvoraksoft.exchangerates.data.repository.BasketRepositoryImpl
 import com.dvoraksoft.exchangerates.data.repository.ChartRepositoryImpl

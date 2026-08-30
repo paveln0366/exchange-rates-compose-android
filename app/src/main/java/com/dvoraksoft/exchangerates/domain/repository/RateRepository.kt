@@ -1,6 +1,6 @@
 package com.dvoraksoft.exchangerates.domain.repository
 
-import com.dvoraksoft.exchangerates.domain.entity.Rate
+import com.dvoraksoft.exchangerates.domain.model.Rate
 import kotlinx.coroutines.flow.Flow
 
 interface RateRepository {

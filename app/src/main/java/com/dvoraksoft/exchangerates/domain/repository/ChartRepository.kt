@@ -1,6 +1,6 @@
 package com.dvoraksoft.exchangerates.domain.repository
 
-import com.dvoraksoft.exchangerates.domain.entity.Dynamic
+import com.dvoraksoft.exchangerates.domain.model.Dynamic
 import kotlinx.datetime.LocalDate
 
 interface ChartRepository {

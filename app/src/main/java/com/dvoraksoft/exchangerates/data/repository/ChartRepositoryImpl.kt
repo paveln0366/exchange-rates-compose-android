@@ -2,7 +2,7 @@ package com.dvoraksoft.exchangerates.data.repository
 
 import com.dvoraksoft.exchangerates.data.mapper.toDomain
 import com.dvoraksoft.exchangerates.data.remote.ApiService
-import com.dvoraksoft.exchangerates.domain.entity.Dynamic
+import com.dvoraksoft.exchangerates.domain.model.Dynamic
 import com.dvoraksoft.exchangerates.domain.repository.ChartRepository
 import kotlinx.datetime.LocalDate
 import javax.inject.Inject

@@ -58,8 +58,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.dvoraksoft.exchangerates.R
-import com.dvoraksoft.exchangerates.domain.entity.Basket
-import com.dvoraksoft.exchangerates.domain.entity.BasketItem
+import com.dvoraksoft.exchangerates.domain.model.Basket
+import com.dvoraksoft.exchangerates.domain.model.BasketItem
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Accent
 import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Green

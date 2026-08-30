@@ -1,6 +1,6 @@
 package com.dvoraksoft.exchangerates.domain.usecase
 
-import com.dvoraksoft.exchangerates.domain.entity.Basket
+import com.dvoraksoft.exchangerates.domain.model.Basket
 import com.dvoraksoft.exchangerates.domain.repository.BasketRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.LocalDate

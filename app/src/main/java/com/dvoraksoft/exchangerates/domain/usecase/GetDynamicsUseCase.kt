@@ -1,7 +1,7 @@
 package com.dvoraksoft.exchangerates.domain.usecase
 
-import com.dvoraksoft.exchangerates.domain.entity.Dynamic
-import com.dvoraksoft.exchangerates.domain.entity.PeriodType
+import com.dvoraksoft.exchangerates.domain.model.Dynamic
+import com.dvoraksoft.exchangerates.domain.model.PeriodType
 import com.dvoraksoft.exchangerates.domain.repository.ChartRepository
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.TimeZone

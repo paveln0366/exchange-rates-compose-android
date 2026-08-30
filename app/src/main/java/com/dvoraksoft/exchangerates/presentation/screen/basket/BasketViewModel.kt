@@ -2,7 +2,7 @@ package com.dvoraksoft.exchangerates.presentation.screen.basket
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dvoraksoft.exchangerates.domain.entity.Basket
+import com.dvoraksoft.exchangerates.domain.model.Basket
 import com.dvoraksoft.exchangerates.domain.usecase.GetBasketFlowUseCase
 import com.dvoraksoft.exchangerates.domain.usecase.RefreshBasketUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

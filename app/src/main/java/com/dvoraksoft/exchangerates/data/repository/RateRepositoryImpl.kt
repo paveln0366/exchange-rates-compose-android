@@ -1,10 +1,10 @@
 package com.dvoraksoft.exchangerates.data.repository
 
-import com.dvoraksoft.exchangerates.data.local.RateDao
+import com.dvoraksoft.exchangerates.data.local.dao.RateDao
 import com.dvoraksoft.exchangerates.data.mapper.toDomain
 import com.dvoraksoft.exchangerates.data.mapper.toEntity
 import com.dvoraksoft.exchangerates.data.remote.ApiService
-import com.dvoraksoft.exchangerates.domain.entity.Rate
+import com.dvoraksoft.exchangerates.domain.model.Rate
 import com.dvoraksoft.exchangerates.domain.repository.RateRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

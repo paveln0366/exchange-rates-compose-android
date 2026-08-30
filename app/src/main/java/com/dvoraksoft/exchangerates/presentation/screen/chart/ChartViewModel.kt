@@ -2,8 +2,8 @@ package com.dvoraksoft.exchangerates.presentation.screen.chart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dvoraksoft.exchangerates.domain.entity.Dynamic
-import com.dvoraksoft.exchangerates.domain.entity.PeriodType
+import com.dvoraksoft.exchangerates.domain.model.Dynamic
+import com.dvoraksoft.exchangerates.domain.model.PeriodType
 import com.dvoraksoft.exchangerates.domain.usecase.GetDynamicsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

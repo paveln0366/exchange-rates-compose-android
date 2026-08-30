@@ -52,8 +52,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.dvoraksoft.exchangerates.R
-import com.dvoraksoft.exchangerates.domain.entity.Dynamic
-import com.dvoraksoft.exchangerates.domain.entity.PeriodType
+import com.dvoraksoft.exchangerates.domain.model.Dynamic
+import com.dvoraksoft.exchangerates.domain.model.PeriodType
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Accent
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Blue
 import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme

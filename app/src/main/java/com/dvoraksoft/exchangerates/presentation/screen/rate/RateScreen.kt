@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.dvoraksoft.exchangerates.R
-import com.dvoraksoft.exchangerates.domain.entity.Rate
+import com.dvoraksoft.exchangerates.domain.model.Rate
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Accent
 import com.dvoraksoft.exchangerates.presentation.ui.theme.ExchangeRatesTheme
 import com.dvoraksoft.exchangerates.presentation.ui.theme.Green

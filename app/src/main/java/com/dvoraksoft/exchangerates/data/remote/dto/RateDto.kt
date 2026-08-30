@@ -1,4 +1,4 @@
-package com.dvoraksoft.exchangerates.data.remote
+package com.dvoraksoft.exchangerates.data.remote.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
